@@ -1,0 +1,413 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Distrito Capital",
+        "code": "DC"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-66.9036, 10.4806],
+          [-66.8036, 10.4806],
+          [-66.8036, 10.5806],
+          [-66.9036, 10.5806],
+          [-66.9036, 10.4806]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Miranda",
+        "code": "MI"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-66.8036, 10.3806],
+          [-66.5036, 10.3806],
+          [-66.5036, 10.6806],
+          [-66.8036, 10.6806],
+          [-66.8036, 10.3806]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Carabobo",
+        "code": "CA"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-67.5958, 10.2518],
+          [-67.3958, 10.2518],
+          [-67.3958, 10.4518],
+          [-67.5958, 10.4518],
+          [-67.5958, 10.2518]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Zulia",
+        "code": "ZU"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-71.1561, 8.5937],
+          [-70.8561, 8.5937],
+          [-70.8561, 8.8937],
+          [-71.1561, 8.8937],
+          [-71.1561, 8.5937]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lara",
+        "code": "LA"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-69.3136, 10.0647],
+          [-69.0136, 10.0647],
+          [-69.0136, 10.3647],
+          [-69.3136, 10.3647],
+          [-69.3136, 10.0647]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Aragua",
+        "code": "AR"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-67.2956, 10.1234],
+          [-67.0956, 10.1234],
+          [-67.0956, 10.3234],
+          [-67.2956, 10.3234],
+          [-67.2956, 10.1234]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Anzoátegui",
+        "code": "AN"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-64.6896, 10.1267],
+          [-64.4896, 10.1267],
+          [-64.4896, 10.3267],
+          [-64.6896, 10.3267],
+          [-64.6896, 10.1267]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bolívar",
+        "code": "BO"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-62.7351, 8.1278],
+          [-62.5351, 8.1278],
+          [-62.5351, 8.3278],
+          [-62.7351, 8.3278],
+          [-62.7351, 8.1278]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Táchira",
+        "code": "TA"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-72.2051, 7.7669],
+          [-72.0051, 7.7669],
+          [-72.0051, 7.9669],
+          [-72.2051, 7.9669],
+          [-72.2051, 7.7669]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Falcón",
+        "code": "FA"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-69.6732, 11.4045],
+          [-69.4732, 11.4045],
+          [-69.4732, 11.6045],
+          [-69.6732, 11.6045],
+          [-69.6732, 11.4045]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Yaracuy",
+        "code": "YA"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-68.7424, 10.3399],
+          [-68.5424, 10.3399],
+          [-68.5424, 10.5399],
+          [-68.7424, 10.5399],
+          [-68.7424, 10.3399]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Guárico",
+        "code": "GU"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-66.1106, 8.1113],
+          [-65.9106, 8.1113],
+          [-65.9106, 8.3113],
+          [-66.1106, 8.3113],
+          [-66.1106, 8.1113]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cojedes",
+        "code": "CO"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-68.5825, 9.6612],
+          [-68.3825, 9.6612],
+          [-68.3825, 9.8612],
+          [-68.5825, 9.8612],
+          [-68.5825, 9.6612]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Portuguesa",
+        "code": "PO"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-69.1797, 9.0417],
+          [-68.9797, 9.0417],
+          [-68.9797, 9.2417],
+          [-69.1797, 9.2417],
+          [-69.1797, 9.0417]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Barinas",
+        "code": "BA"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-70.2075, 8.6226],
+          [-70.0075, 8.6226],
+          [-70.0075, 8.8226],
+          [-70.2075, 8.8226],
+          [-70.2075, 8.6226]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Apure",
+        "code": "AP"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-69.6051, 7.8929],
+          [-69.4051, 7.8929],
+          [-69.4051, 8.0929],
+          [-69.6051, 8.0929],
+          [-69.6051, 7.8929]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mérida",
+        "code": "ME"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-71.1568, 8.5979],
+          [-70.9568, 8.5979],
+          [-70.9568, 8.7979],
+          [-71.1568, 8.7979],
+          [-71.1568, 8.5979]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Trujillo",
+        "code": "TR"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-70.4370, 9.3667],
+          [-70.2370, 9.3667],
+          [-70.2370, 9.5667],
+          [-70.4370, 9.5667],
+          [-70.4370, 9.3667]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Monagas",
+        "code": "MO"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-63.1830, 9.7495],
+          [-62.9830, 9.7495],
+          [-62.9830, 9.9495],
+          [-63.1830, 9.9495],
+          [-63.1830, 9.7495]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sucre",
+        "code": "SU"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-64.1738, 10.4516],
+          [-63.9738, 10.4516],
+          [-63.9738, 10.6516],
+          [-64.1738, 10.6516],
+          [-64.1738, 10.4516]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nueva Esparta",
+        "code": "NE"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-63.8489, 10.9958],
+          [-63.6489, 10.9958],
+          [-63.6489, 11.1958],
+          [-63.8489, 11.1958],
+          [-63.8489, 10.9958]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Delta Amacuro",
+        "code": "DA"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-61.9492, 8.5225],
+          [-61.7492, 8.5225],
+          [-61.7492, 8.7225],
+          [-61.9492, 8.7225],
+          [-61.9492, 8.5225]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Amazonas",
+        "code": "AM"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-67.7003, 5.6639],
+          [-67.5003, 5.6639],
+          [-67.5003, 5.8639],
+          [-67.7003, 5.8639],
+          [-67.7003, 5.6639]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vargas",
+        "code": "VA"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-66.9549, 10.5947],
+          [-66.7549, 10.5947],
+          [-66.7549, 10.7947],
+          [-66.9549, 10.7947],
+          [-66.9549, 10.5947]
+        ]]
+      }
+    }
+  ]
+}

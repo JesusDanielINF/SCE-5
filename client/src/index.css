@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(222, 84%, 4.9%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(222, 84%, 4.9%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(222, 84%, 4.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(210, 40%, 96%);
+  --secondary-foreground: hsl(222, 84%, 4.9%);
+  --muted: hsl(210, 40%, 96%);
+  --muted-foreground: hsl(215, 13%, 65%);
+  --accent: hsl(210, 40%, 96%);
+  --accent-foreground: hsl(222, 84%, 4.9%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --border: hsl(214, 32%, 91%);
+  --input: hsl(214, 32%, 91%);
+  --ring: hsl(207, 90%, 54%);
+  --radius: 0.5rem;
+  --sidebar-background: hsl(0, 0%, 100%);
+  --sidebar-foreground: hsl(222, 84%, 4.9%);
+  --sidebar-primary: hsl(207, 90%, 54%);
+  --sidebar-primary-foreground: hsl(211, 100%, 99%);
+  --sidebar-accent: hsl(210, 40%, 96%);
+  --sidebar-accent-foreground: hsl(222, 84%, 4.9%);
+  --sidebar-border: hsl(214, 32%, 91%);
+  --sidebar-ring: hsl(207, 90%, 54%);
+}
+
+.dark {
+  --background: hsl(222, 84%, 4.9%);
+  --foreground: hsl(210, 40%, 98%);
+  --card: hsl(222, 84%, 4.9%);
+  --card-foreground: hsl(210, 40%, 98%);
+  --popover: hsl(222, 84%, 4.9%);
+  --popover-foreground: hsl(210, 40%, 98%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(217, 32%, 17%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --muted: hsl(217, 32%, 17%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --accent: hsl(217, 32%, 17%);
+  --accent-foreground: hsl(210, 40%, 98%);
+  --destructive: hsl(0, 62%, 30%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --border: hsl(217, 32%, 17%);
+  --input: hsl(217, 32%, 17%);
+  --ring: hsl(207, 90%, 54%);
+  --sidebar-background: hsl(222, 84%, 4.9%);
+  --sidebar-foreground: hsl(210, 40%, 98%);
+  --sidebar-primary: hsl(207, 90%, 54%);
+  --sidebar-primary-foreground: hsl(211, 100%, 99%);
+  --sidebar-accent: hsl(217, 32%, 17%);
+  --sidebar-accent-foreground: hsl(210, 40%, 98%);
+  --sidebar-border: hsl(217, 32%, 17%);
+  --sidebar-ring: hsl(207, 90%, 54%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom styles for electoral system */
+.electoral-primary {
+  color: hsl(207, 90%, 54%);
+}
+
+.electoral-secondary {
+  color: hsl(210, 19%, 34%);
+}
+
+.electoral-accent {
+  color: hsl(142, 71%, 45%);
+}
+
+.electoral-warning {
+  color: hsl(36, 100%, 50%);
+}
+
+.electoral-error {
+  color: hsl(0, 84%, 60%);
+}
+
+.electoral-surface {
+  background-color: hsl(0, 0%, 100%);
+}
+
+.electoral-background {
+  background-color: hsl(0, 0%, 96%);
+}
+
+.sidebar-transition {
+  transition: transform 0.3s ease-in-out;
+}
+
+.content-transition {
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.hover-electoral:hover {
+  background-color: hsl(210, 40%, 96%);
+  color: hsl(207, 90%, 54%);
+}
+
+.active-electoral {
+  background-color: hsl(207, 90%, 54%);
+  color: hsl(211, 100%, 99%);
+}
+
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.stats-card {
+  background: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(210, 40%, 98%) 100%);
+  border: 1px solid hsl(214, 32%, 91%);
+}
+
+.stats-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.venezuela-map {
+  min-height: 400px;
+}
