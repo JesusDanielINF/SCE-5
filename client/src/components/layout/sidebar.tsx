@@ -84,6 +84,7 @@ export function Sidebar() {
           size="sm"
           onClick={toggleSidebar}
           className="bg-white"
+          aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
         >
           {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
         </Button>

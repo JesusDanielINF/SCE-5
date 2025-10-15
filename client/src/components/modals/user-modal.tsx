@@ -1,7 +1,8 @@
+import { z } from "zod"; // Importar Zod para la validación
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { insertUserSchema, type InsertUser, type User } from "@shared/schema";
+import { type InsertUser , type User } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -9,6 +10,17 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
+// Esquema de validación para el usuario
+const insertUser Schema = z.object({
+  cedula: z.string().nonempty("Cédula es requerida"),
+  nombre: z.string().nonempty("Nombre es requerido"),
+  apellido: z.string().nonempty("Apellido es requerido"),
+  email: z.string().email("Email no es válido"),
+  telefono: z.string().nonempty("Teléfono es requerido"),
+  password: z.string().nonempty("Contraseña es requerida"), // Contraseña es obligatoria
+  id_rol: z.number().nonnegative("Rol es requerido"), // Cambiado a no opcional
+});
 
 interface UserModalProps {
   isOpen: boolean;
@@ -25,21 +37,21 @@ export function UserModal({ isOpen, onClose, user }: UserModalProps) {
     queryKey: ["/api/roles"],
   });
 
-  const form = useForm<InsertUser>({
-    resolver: zodResolver(insertUserSchema),
+  const form = useForm<InsertUser >({
+    resolver: zodResolver(insertUser Schema), // Usar el esquema de validación
     defaultValues: {
       cedula: user?.cedula || "",
       nombre: user?.nombre || "",
       apellido: user?.apellido || "",
       email: user?.email || "",
       telefono: user?.telefono || "",
-      contrasena: "",
-      id_rol: user?.id_rol || undefined,
+      password: "", // Mantener el campo de contraseña vacío para la edición
+      id_rol: user?.id_rol || 1, // Asegúrate de que haya un rol por defecto
     },
   });
 
   const createMutation = useMutation({
-    mutationFn: async (data: InsertUser) => {
+    mutationFn: async (data: InsertUser ) => {
       const response = await apiRequest("POST", "/api/users", data);
       return response.json();
     },
@@ -52,17 +64,17 @@ export function UserModal({ isOpen, onClose, user }: UserModalProps) {
       onClose();
       form.reset();
     },
-    onError: () => {
+    onError: (error) => {
       toast({
         title: "Error",
-        description: "No se pudo crear el usuario",
+        description: error.message || "No se pudo crear el usuario",
         variant: "destructive",
       });
     },
   });
 
   const updateMutation = useMutation({
-    mutationFn: async (data: Partial<InsertUser>) => {
+    mutationFn: async (data: Partial<InsertUser >) => {
       const response = await apiRequest("PUT", `/api/users/${user!.id}`, data);
       return response.json();
     },
@@ -75,25 +87,25 @@ export function UserModal({ isOpen, onClose, user }: UserModalProps) {
       onClose();
       form.reset();
     },
-    onError: () => {
+    onError: (error) => {
       toast({
         title: "Error",
-        description: "No se pudo actualizar el usuario",
+        description: error.message || "No se pudo actualizar el usuario",
         variant: "destructive",
       });
     },
   });
 
-  const onSubmit = (data: InsertUser) => {
+  const onSubmit = (data: InsertUser ) => {
     if (isEditing) {
-      // Don't send password if it's empty during edit
+      // En la edición, si la contraseña está vacía, no se debe enviar
       const updateData = { ...data };
       if (!updateData.contrasena) {
-        delete updateData.contrasena;
+        delete updateData.contrasena; // No enviar la contraseña si está vacía
       }
       updateMutation.mutate(updateData);
     } else {
-      createMutation.mutate(data);
+      createMutation.mutate(data); // Aquí se envía el rol junto con el resto de los datos
     }
   };
 
@@ -228,3 +240,4 @@ export function UserModal({ isOpen, onClose, user }: UserModalProps) {
     </Dialog>
   );
 }
+

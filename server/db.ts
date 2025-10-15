@@ -1,15 +1,38 @@
-import { Pool, neonConfig } from '@neondatabase/serverless';
-import { drizzle } from 'drizzle-orm/neon-serverless';
-import ws from "ws";
-import * as schema from "@shared/schema";
+import dotenv from 'dotenv';
+dotenv.config();
 
-neonConfig.webSocketConstructor = ws;
+import { Pool } from 'pg';
+import * as schema from '@shared/schema';
 
-if (!process.env.DATABASE_URL) {
-  throw new Error(
-    "DATABASE_URL must be set. Did you forget to provision a database?",
-  );
-}
+// Usa valor por defecto si no hay DATABASE_URL
+const DATABASE_URL = process.env.DATABASE_URL || 'postgres://postgres:Sce.2025@localhost:5432/sce';
 
-export const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-export const db = drizzle({ client: pool, schema });
+export const pool = new Pool({ connectionString: DATABASE_URL });
+
+export const testConnection = async (): Promise<void> => {
+  let client;
+  try {
+    client = await pool.connect();
+    console.log('Conectado a la base de datos PostgreSQL');
+  } catch (err) {
+    console.error('Error de conexión a la base de datos:', err.message);
+    console.error('Verifica que PostgreSQL esté corriendo y que la cadena de conexión sea correcta.');
+  } finally {
+    if (client) client.release();
+  }
+};
+
+export const queryDatabase = async (query: string, params: any[] = []): Promise<any> => {
+  const client = await pool.connect();
+  try {
+    const res = await client.query(query, params);
+    return res.rows;
+  } catch (err) {
+    console.error('Error al realizar la consulta', err);
+    throw err;
+  } finally {
+    client.release();
+  }
+};
+
+testConnection();

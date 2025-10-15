@@ -8,16 +8,16 @@ import { DataTable } from "@/components/tables/data-table";
 import { UserModal } from "@/components/modals/user-modal";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, User } from "lucide-react";
+import { Plus, User as UserIcon } from "lucide-react";
 import type { User } from "@shared/schema";
 
 export default function Users() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  const [selectedUser , setSelectedUser ] = useState<User | null>(null);
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
-  const { data: users = [], isLoading } = useQuery({
+  const { data: users = [], isLoading, isError } = useQuery({
     queryKey: ["/api/users"],
   });
 
@@ -46,23 +46,28 @@ export default function Users() {
   });
 
   const handleEdit = (user: User) => {
-    setSelectedUser(user);
+    setSelectedUser (user);
     setIsModalOpen(true);
   };
 
   const handleDelete = (user: User) => {
+    if (!user.id) {
+      console.error("User  ID is undefined");
+      return;
+    }
     if (confirm("¿Está seguro de que desea eliminar este usuario?")) {
       deleteMutation.mutate(user.id);
     }
   };
 
   const handleCreate = () => {
-    setSelectedUser(null);
+    setSelectedUser (null);
     setIsModalOpen(true);
   };
 
   const getRoleName = (roleId: number | null) => {
     if (!roleId) return "Sin rol";
+    if (!roles || roles.length === 0) return "Sin rol"; // Verifica que roles tenga datos
     const role = roles.find(r => r.id_rol === roleId);
     return role?.nombre || "Sin rol";
   };
@@ -73,8 +78,8 @@ export default function Users() {
       label: "Usuario",
       render: (value: string, item: User) => (
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-            <User className="w-5 h-5 text-white" />
+         <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+  <UserIcon className="w-5 h-5 text-white" />
           </div>
           <div>
             <div className="text-sm font-medium text-gray-900">{item.nombre} {item.apellido}</div>
@@ -114,6 +119,14 @@ export default function Users() {
     },
   ];
 
+  if (isLoading) {
+    return <div>Cargando...</div>; // Muestra un mensaje de carga
+  }
+
+  if (isError) {
+    return <div>Error al cargar los usuarios.</div>; // Manejo de errores
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Sidebar />
@@ -142,13 +155,14 @@ export default function Users() {
             />
           </div>
 
-          <UserModal
+          <User Modal
             isOpen={isModalOpen}
             onClose={() => setIsModalOpen(false)}
-            user={selectedUser}
+            user={selectedUser  || {}} // Proporciona un objeto vacío si es null
           />
         </main>
       </div>
     </div>
   );
 }
+

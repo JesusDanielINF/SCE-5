@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/hooks/use-auth";
 import { useLocation } from "wouter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,6 +15,7 @@ export default function AuthPage() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
 
+  // Solo email y password para login
   const [loginData, setLoginData] = useState({
     email: "",
     password: ""
@@ -22,25 +23,26 @@ export default function AuthPage() {
 
   const [registerData, setRegisterData] = useState({
     cedula: "",
-    nombre: "",
+    username: "",
     apellido: "",
     email: "",
     telefono: "",
-    contrasena: "",
+    password: "",
     id_rol: 1
   });
 
-  // Redirect if already authenticated
-  if (user) {
-    setLocation("/");
-    return null;
-  }
+  // Redirige si ya está autenticado
+  useEffect(() => {
+    if (user) {
+      setLocation("/");
+    }
+  }, [user, setLocation]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await loginMutation.mutateAsync({
-        username: loginData.email,
+        email: loginData.email,
         password: loginData.password
       });
       toast({
@@ -48,10 +50,10 @@ export default function AuthPage() {
         description: "Bienvenido al Sistema de Control Electoral",
       });
       setLocation("/");
-    } catch (error) {
+    } catch (error: any) {
       toast({
         title: "Error de autenticación",
-        description: "Credenciales inválidas. Por favor verifique sus datos.",
+        description: error?.message || "Credenciales inválidas. Por favor verifique sus datos.",
         variant: "destructive",
       });
     }
@@ -66,10 +68,11 @@ export default function AuthPage() {
         description: "Su cuenta ha sido creada exitosamente",
       });
       setLocation("/");
-    } catch (error) {
+    } catch (error: any) {
+      console.error(error); 
       toast({
         title: "Error en el registro",
-        description: "No se pudo crear la cuenta. Por favor verifique sus datos.",
+        description: error?.message || "No se pudo crear la cuenta. Por favor verifique sus datos.",
         variant: "destructive",
       });
     }
@@ -126,9 +129,9 @@ export default function AuthPage() {
                     <Button
                       type="submit"
                       className="w-full bg-primary hover:bg-primary/90"
-                      disabled={loginMutation.isPending}
+                      disabled={loginMutation.isLoading}
                     >
-                      {loginMutation.isPending ? "Iniciando sesión..." : "Iniciar Sesión"}
+                      {loginMutation.isLoading ? "Iniciando sesión..." : "Iniciar Sesión"}
                     </Button>
                   </form>
                   
@@ -155,12 +158,12 @@ export default function AuthPage() {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="nombre">Nombre</Label>
+                        <Label htmlFor="username-register">Nombre de usuario</Label>
                         <Input
-                          id="nombre"
-                          placeholder="Juan"
-                          value={registerData.nombre}
-                          onChange={(e) => setRegisterData(prev => ({ ...prev, nombre: e.target.value }))}
+                          id="username-register"
+                          placeholder="Nombre"
+                          value={registerData.username}
+                          onChange={(e) => setRegisterData(prev => ({ ...prev, username: e.target.value }))}
                           required
                         />
                       </div>
@@ -169,7 +172,7 @@ export default function AuthPage() {
                       <Label htmlFor="apellido">Apellido</Label>
                       <Input
                         id="apellido"
-                        placeholder="Pérez"
+                        placeholder="Apellido"
                         value={registerData.apellido}
                         onChange={(e) => setRegisterData(prev => ({ ...prev, apellido: e.target.value }))}
                         required
@@ -202,17 +205,17 @@ export default function AuthPage() {
                         id="register-password"
                         type="password"
                         placeholder="********"
-                        value={registerData.contrasena}
-                        onChange={(e) => setRegisterData(prev => ({ ...prev, contrasena: e.target.value }))}
+                        value={registerData.password}
+                        onChange={(e) => setRegisterData(prev => ({ ...prev, password: e.target.value }))}
                         required
                       />
                     </div>
                     <Button
                       type="submit"
                       className="w-full bg-primary hover:bg-primary/90"
-                      disabled={registerMutation.isPending}
+                      disabled={registerMutation.isLoading}
                     >
-                      {registerMutation.isPending ? "Registrando..." : "Registrarse"}
+                      {registerMutation.isLoading ? "Registrando..." : "Registrarse"}
                     </Button>
                   </form>
                   
