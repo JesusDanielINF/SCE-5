@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'">
+    <title>VenezuelaNavigator</title>  <!-- Agregado para dar un título a la app -->
+</head>
+<body>
+    <div id="root"></div>  <!-- Se mantiene, ya que es el contenedor para React -->
+    
+    <!-- Ajuste del script: Cambiado a un archivo bundleado. Asumimos que después de compilar, está en main.js -->
+    <script type="module" src="main.js"></script>  <!-- Original: src="/src/main.tsx". Cambiado para producción -->
+    
+    <!-- El script de Replit se ha removido, ya que no es necesario para Capacitor o entornos de producción -->
+</body>
+</html>
